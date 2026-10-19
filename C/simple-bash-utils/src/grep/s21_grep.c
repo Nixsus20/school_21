@@ -1,11 +1,15 @@
 #include "s21_grep.h"
 
+// grep exits with status 1 when no lines were selected.
+static int found_any_match = 0;
+
 int main(int argc, char* argv[]) {
   flags flag = GREP_FLAGS;
   char pattern[BUFF_SIZE] = {0};
   int res = parse_flags(argc, argv, &flag, pattern);
   if (res == 0) {
     count_files(&flag, pattern, argc, argv);
+    if (!found_any_match) res = 1;
   }
   if (argc < 3) {
     fprintf(stderr, "Usage: %s [options] pattern [file...]\n", argv[0]);
@@ -133,6 +137,8 @@ void process_line(flags* flag, FILE* fp, regex_t re, char* file,
     lineMatches += match;
     nline++;
   }
+
+  if (lineMatches > 0) found_any_match = 1;
 
   if (flag->c && flag->l) {
     if (fileCount && !flag->h) {
