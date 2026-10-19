@@ -1,15 +1,13 @@
 CC = gcc
+OS := $(shell uname -s)
 CFLAGS = -Wall -Werror -Wextra -I.
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
-TEST_FLAGS = -lcheck -lm
 LIB = s21_decimal.a
 
-ifeq (${OS}, Linux)
-	TEST_FLAGS = -lcheck -lm
-else ifeq (${OS}, Darwin)
-	TEST_FLAGS = -lcheck -lm
+ifeq ($(OS), Linux)
+	TEST_FLAGS = -lcheck -lsubunit -lm
 else
-	TEST_FLAGS = -lcheck
+	TEST_FLAGS = -lcheck -lm
 endif
 
 ARITHMETIC_SRC = $(wildcard arithmeticOps/*.c)
@@ -32,14 +30,14 @@ $(LIB): $(COMMON_SRC)
 
 test: $(LIB)
 	$(CC) $(CFLAGS) $(ALL_TESTS) $(LIB) -o test $(TEST_FLAGS)
-	./test || true
+	./test
 
 gcov_report:
 	$(CC) $(CFLAGS) --coverage -c $(COMMON_SRC)
 	ar rcs $(LIB) *.o
 	rm *.o
 	$(CC) $(CFLAGS) --coverage $(ALL_TESTS) $(LIB) -o test_gcov $(TEST_FLAGS)
-	./test_gcov || true
+	./test_gcov
 	lcov -t "s21_decimal_test_report" -o s21_decimal.info -c -d .
 	genhtml -o report s21_decimal.info
 	open report/index.html
