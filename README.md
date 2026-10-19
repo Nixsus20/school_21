@@ -1,30 +1,36 @@
-# School 21 / C and SQL projects
+# School 21: C и SQL
 
-A selection of projects and exercises completed during my studies at School 21.
+Сюда я собрал проекты из Школы 21, которые есть смысл показывать по коду. Одна версия на каждое задание, без повторных попыток и пустых репозиториев. Часть работ делалась в команде.
 
-I kept the working implementations rather than every attempt. Some projects were done with teammates; no part of this archive is presented as my solo contribution where it wasn't.
+Внутри каждого проекта есть README с условиями задачи, техническими ограничениями и тем, что находится в исходниках. Длинных школьных методичек здесь нет.
 
 ## C
 
-| Project | Focus |
+| Проект | Задача | Главное ограничение |
+| --- | --- | --- |
+| [Simple Bash Utils](C/simple-bash-utils/) | Свои `cat` и `grep`, аргументы и флаги | Сравнение с системными утилитами, C11 |
+| [s21_stringplus](C/string-library/) | Строковые и memory-функции, свой `sprintf` | Нельзя использовать готовые аналоги из `string.h` |
+| [s21_decimal](C/decimal-library/) | Десятичная арифметика и конвертация типов | 96-битное значение, без `__int128` |
+| [s21_matrix](C/matrix-library/) | Операции над матрицами | Динамическая память, точность вычислений |
+| [Terminal Tetris](C/terminal-tetris/) | Игровая логика и терминальный интерфейс | Поле 10×20, конечный автомат, `ncurses` |
+
+Это C-проекты со своими Makefile. Исходный код лежит в `src/`; там же можно найти тесты, если они входили в реализацию. Сборка и зависимости описаны отдельно для каждого проекта.
+
+## SQL / PostgreSQL
+
+| Серия | Что было в заданиях |
 | --- | --- |
-| [Simple Bash Utils](C/simple-bash-utils/) | `cat`, `grep`, command-line flags and test scripts |
-| [String library](C/string-library/) | String operations, raw memory and formatted output |
-| [Decimal library](C/decimal-library/) | Fixed-point arithmetic and bit manipulation |
-| [Matrix library](C/matrix-library/) | Dynamic allocation and linear algebra |
-| [Terminal Tetris](C/terminal-tetris/) | Game logic and ncurses terminal UI |
+| [01. SELECT и фильтрация](SQL/01-sql-basics/) | Выборки, условия, вычисляемые поля, скалярные подзапросы |
+| [02. Множества и JOIN](SQL/02-set-operations/) | `UNION`, `INTERSECT`, `EXCEPT`, декартово произведение, соединения |
+| [03. JOIN и CTE](SQL/03-joins-and-subqueries/) | Пропущенные записи, `LEFT/FULL JOIN`, `WITH`, связанные таблицы |
+| [04. DML](SQL/04-data-manipulation/) | Выборки, вставка, обновление и удаление строк |
+| [05. Представления](SQL/05-views-and-snapshots/) | `VIEW`, `MATERIALIZED VIEW`, обновление и удаление представлений |
+| [06. Traveling salesman](SQL/06-traveling-salesman/) | Поиск маршрутов с помощью рекурсивного SQL |
 
-## SQL
+Каждое SQL-упражнение сохранено отдельным файлом `src/exNN/*.sql`. В README соответствующей серии указано, что требовалось получить и какой синтаксис был запрещён или обязателен. Исходная учебная БД в репозиторий не включена.
 
-| Project | Focus |
-| --- | --- |
-| [Basics](SQL/01-sql-basics/) | Selection, filtering and ordering |
-| [Set operations](SQL/02-set-operations/) | Combining results |
-| [Joins and subqueries](SQL/03-joins-and-subqueries/) | Related tables |
-| [DML](SQL/04-data-manipulation/) | Data manipulation |
-| [Views](SQL/05-views-and-snapshots/) | Reusable views |
-| [Traveling salesman](SQL/06-traveling-salesman/) | Recursive queries and route costs |
+## Несколько замечаний
 
-Each folder has a short README and a `src/` directory with the implementation. C project READMEs contain build instructions. Tests are included in several projects, but I haven't claimed a verified passing test run.
+Это учебный код, а не набор готовых production-библиотек. Наличие тестов и целей `gcov_report` не означает, что я заново проверил их прохождение и покрытие для этой публикации. В описаниях отдельно отмечены обнаруженные ограничения текущих версий.
 
-The original School 21 task statements and teaching materials are deliberately not included here. This is a fresh public copy with no history imported from the school's GitLab repositories.
+Другие задания, включая Linux и системный анализ, хранятся отдельно и не входят в этот публичный репозиторий.
