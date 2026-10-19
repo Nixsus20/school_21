@@ -8,4 +8,4 @@
 **/gcov_html
 **/report
 **/test_runner
-**/tetris
+**/src/tetris
