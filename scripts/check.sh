@@ -94,7 +94,7 @@ if command -v pkg-config >/dev/null 2>&1 && pkg-config --exists check; then
   echo "== C: Check unit tests =="
   # Unlike the original decimal Makefile, re-running ./test checks the real exit status.
   run "string: unit tests"     make -C "$WORK/string-library/src" test
-  run "decimal: compile tests" make -C "$WORK/decimal-library/src" test "TEST_FLAGS=-lcheck -lsubunit -lm"
+  run "decimal: compile tests" make -C "$WORK/decimal-library/src" test
   if [[ -x "$WORK/decimal-library/src/test" ]]; then
     run "decimal: unit tests" "$WORK/decimal-library/src/test"
   else
