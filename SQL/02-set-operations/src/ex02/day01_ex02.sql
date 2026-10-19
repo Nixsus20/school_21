@@ -1,4 +1,3 @@
-ex 02 
 SELECT pizza_name
 FROM menu
 union
