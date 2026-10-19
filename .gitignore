@@ -1,0 +1,11 @@
+.DS_Store
+*.o
+*.a
+*.gcda
+*.gcno
+*.gcov
+*.info
+*.exe
+/build/
+/report/
+/cov/
