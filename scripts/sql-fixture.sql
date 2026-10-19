@@ -54,7 +54,7 @@ INSERT INTO pizzeria(id, name, rating) VALUES
   (2,'Dominos',4.5),
   (3,'PizzaLab',3.7),
   (4,'North Slice',4.9),
-  (5,'City Pizza',3.1),
+  (5,'Best Pizza',3.1),
   (6,'Riverside Pizza',4.0);
 
 INSERT INTO menu(id, pizzeria_id, pizza_name, price) VALUES
