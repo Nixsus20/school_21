@@ -1,0 +1,11 @@
+.git
+**/.DS_Store
+**/*.o
+**/*.a
+**/*.gcda
+**/*.gcno
+**/*.gcov
+**/gcov_html
+**/report
+**/test_runner
+**/tetris
